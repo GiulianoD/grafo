@@ -16,7 +16,12 @@ public class Grafo<TIPO> {
         this.vertices.add(novoVertice);
     }
 
-    public void addAresta(Double peso, TIPO dadoInicio, TIPO dadoFim){
+    public void addAresta(Double peso, TIPO dadoInicio, TIPO dadoFim){ // adiciona uma aresta ao grafo
+        // peso : peso do caminho entre o inicio e o fim
+        // dado inicio : representa o valor do Vertice inicio.
+        // dado fim: representa o valor do Vertice fim.
+        // estes valores serao utilizados para encontrar o vertice na lista do grafo com o getVertice
+
         Vertice<TIPO> inicio = this.getVertice(dadoInicio); // busca pelo vertice da ponta de inicio da aresta
         Vertice<TIPO> fim    = this.getVertice(dadoFim); // busca pelo vertice do fim da aresta
 

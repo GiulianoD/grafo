@@ -78,18 +78,22 @@ public class Main {
                 case 1:
                     System.out.print("Digite o id de inicio: \n");
                     id = scan.nextInt();
-                    grf.getVizinhos(id);
+                    grf.getVizinhos(id-1); // "-1" pois comeca com "um", e nao com "zero"
+                    System.out.println();
                 break;
 
                 case 2:
                     System.out.print("Digite o id de inicio: \n");
                     id = scan.nextInt();
-                    grf.buscaEmLargura(id);
+                    grf.buscaEmLargura(id-1); // "-1" pois comeca com "um", e nao com "zero"
+                    System.out.println();
                 break;
 
                 case 3:
                 break;
             }
         }
+
+        scan.close();
     }
 }

@@ -43,15 +43,17 @@ public class Grafo<TIPO> {
     }
 
     public Vertice<TIPO> getVertice (TIPO id){
+        // busca por um vertice com o ID
         for (Vertice<TIPO> v : vertices)
-            if (v.getid() == id) return v;
+            if (v.getid() == id) return v; // retorna o vertice encontrado
         return null;
+        // retorna null, caso nao encontre
     }
 
     public void getVizinhos(int id){
         if (id > this.vertices.size() -1) return; // verifica se entrou com um id disponivel
 
-        Vertice<TIPO> v = this.getVerticeList().get(id);
+        Vertice<TIPO> v = this.getVerticeList().get(id); // recebe o vertice o qual sera o ponto de inicio
 
         for (int i=0; i < v.getArestasSaidas().size(); i++){ // ira na busca por cada vertice visitavel a partir de "v"
             System.out.print(v.getArestasSaidas().get(i).getFim().getid()); // imprime o nome do vertice
@@ -68,13 +70,14 @@ public class Grafo<TIPO> {
 
         ArrayList<Vertice<TIPO>> verticesMarcados = new ArrayList<Vertice<TIPO>>();
         ArrayList<Vertice<TIPO>> verticesVisitados = new ArrayList<Vertice<TIPO>>();
-        Vertice<TIPO> verticeAtual = this.vertices.get(id);
 
-        verticesMarcados.add(verticeAtual);
-        System.out.println(verticeAtual.getid() + " - " + verticeAtual.getNome());
-        verticesVisitados.add(verticeAtual);
+        Vertice<TIPO> verticeAtual = this.vertices.get(id); // recebe o vertice o qual sera o ponto de inicio
 
-        while (verticesVisitados.size() > 0){
+        verticesMarcados.add(verticeAtual); // adiciona o ponto inicial na lista de marcado
+        System.out.println("O seguintes vertices podem ser alcancados partindo inicialmente de: " + verticeAtual.getid() + " - " + verticeAtual.getNome());
+        verticesVisitados.add(verticeAtual); // adiciona o ponto inicial na lista de visitado
+
+        while (verticesVisitados.size() > 0){ // fica em loop enquanto ainda houver Vertice na lista de visitados
             verticeAtual = verticesVisitados.get(0);
 
             for (int i=0; i < verticeAtual.getArestasSaidas().size(); i++){ // agora ira na busca por cada vertice visitavel a partir do verticeAtual
@@ -85,7 +88,7 @@ public class Grafo<TIPO> {
                     verticesVisitados.add(proximo);
                 }
             }
-            verticesVisitados.remove(0);
+            verticesVisitados.remove(0); // apos visitar todas as arestas do vertice, o mesmo foi retirado da lista
         }
     }
 }

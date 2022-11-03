@@ -1,19 +1,19 @@
 package estrutura;
 public class Aresta<TIPO> {
-    private Double peso;
+    private Float peso;
     private Vertice<TIPO> inicio;
     private Vertice<TIPO> fim;
 
-    public Aresta(Double peso, Vertice<TIPO> inicio, Vertice<TIPO> fim){
+    public Aresta(Float peso, Vertice<TIPO> inicio, Vertice<TIPO> fim){
         this.peso = peso;
         this.inicio = inicio;
         this.fim = fim;
     }
 
-    public Double getPeso() {
+    public Float getPeso() {
         return peso;
     }
-    public void setPeso(Double peso) {
+    public void setPeso(Float peso) {
         this.peso = peso;
     }
     public Vertice<TIPO> getInicio() {

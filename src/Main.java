@@ -13,10 +13,11 @@ public class Main {
         System.out.print("Escolha: \n");
         System.out.print("1- Ver vizinhos \n");
         System.out.print("2- Ver destinos possiveis \n");
-        System.out.print("3- Sair \n");
+        System.out.print("3- Caminho minimo entre dois vertices (Dijkstra) \n");
+        System.out.print("0- Sair \n");
     }
 
-    private static Grafo<String> leArquivoParaGrafo(){
+    private static Grafo<String> leArquivoParaGrafo(String nomeArq){
         ArrayList<Vertice<String>> vertices = new ArrayList<Vertice<String>>();
         ArrayList<Aresta<String>> arestas = new ArrayList<Aresta<String>>();
         Grafo<String> grf = new Grafo<String>(vertices, arestas);
@@ -24,7 +25,7 @@ public class Main {
 
         // le arquivo e salva o grafo em memoria
         try {
-            File myObj = new File("entrada.txt");
+            File myObj = new File(nomeArq);
             myReader = new Scanner(myObj);
             
             int qtdCidades = myReader.nextInt();myReader.nextLine();
@@ -67,30 +68,40 @@ public class Main {
     }
 
     public static void main(String[] args){
-        Grafo<String> grf = Main.leArquivoParaGrafo();
-        int op = 0;
+        Grafo<String> grf = Main.leArquivoParaGrafo("entrada250.txt");
+        int op = 1;
         Scanner scan = new Scanner(System.in); 
         int id;
+        int id2;
 
-        while (op != 3){
+        while (op != 0){
             Main.menu();
             op = scan.nextInt();
             switch (op){
                 case 1:
                     System.out.print("Digite o id de inicio: ");
                     id = scan.nextInt();
-                    grf.getVizinhos(id-1); // "-1" pois comeca com "um", e nao com "zero"
+                    grf.getVizinhos(id);
                     System.out.println();
                 break;
 
                 case 2:
                     System.out.print("Digite o id de inicio: ");
                     id = scan.nextInt();
-                    grf.buscaEmLargura(id-1); // "-1" pois comeca com "um", e nao com "zero"
+                    grf.buscaEmLargura(id);
                     System.out.println();
                 break;
 
                 case 3:
+                    System.out.print("Digite o id de origem: ");
+                    id = scan.nextInt();
+                    System.out.print("Digite o id de destino: ");
+                    id2 = scan.nextInt();
+                    grf.dijkstra(id, id2);
+                    System.out.println();
+                break;
+
+                case 0:
                 break;
             }
         }

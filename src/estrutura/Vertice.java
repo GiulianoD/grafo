@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Vertice<TIPO> {
     private int id;
     private TIPO dados;
-    private ArrayList<Aresta<TIPO>> arestasEntradas;
-    private ArrayList<Aresta<TIPO>> arestasSaidas;
+    private ArrayList<Aresta<TIPO>> arestasEntradas; // lista de arestas que terminam neste vertice
+    private ArrayList<Aresta<TIPO>> arestasSaidas; // lista de arestas que comecam a partir deste vertice
 
     public ArrayList<Aresta<TIPO>> getArestasEntradas() {
         return arestasEntradas;

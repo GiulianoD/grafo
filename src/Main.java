@@ -16,15 +16,16 @@ public class Main {
         System.out.print("3- Sair \n");
     }
 
-    private static Grafo<Integer> leArquivoParaGrafo(){
-        ArrayList<Vertice<Integer>> vertices = new ArrayList<Vertice<Integer>>();
-        ArrayList<Aresta<Integer>> arestas = new ArrayList<Aresta<Integer>>();
-        Grafo<Integer> grf = new Grafo<Integer>(vertices, arestas);
+    private static Grafo<String> leArquivoParaGrafo(){
+        ArrayList<Vertice<String>> vertices = new ArrayList<Vertice<String>>();
+        ArrayList<Aresta<String>> arestas = new ArrayList<Aresta<String>>();
+        Grafo<String> grf = new Grafo<String>(vertices, arestas);
+        Scanner myReader;
 
         // le arquivo e salva o grafo em memoria
         try {
             File myObj = new File("entrada.txt");
-            Scanner myReader = new Scanner(myObj);
+            myReader = new Scanner(myObj);
             
             int qtdCidades = myReader.nextInt();myReader.nextLine();
 
@@ -66,7 +67,7 @@ public class Main {
     }
 
     public static void main(String[] args){
-        Grafo<Integer> grf = Main.leArquivoParaGrafo();
+        Grafo<String> grf = Main.leArquivoParaGrafo();
         int op = 0;
         Scanner scan = new Scanner(System.in); 
         int id;
@@ -76,14 +77,14 @@ public class Main {
             op = scan.nextInt();
             switch (op){
                 case 1:
-                    System.out.print("Digite o id de inicio: \n");
+                    System.out.print("Digite o id de inicio: ");
                     id = scan.nextInt();
                     grf.getVizinhos(id-1); // "-1" pois comeca com "um", e nao com "zero"
                     System.out.println();
                 break;
 
                 case 2:
-                    System.out.print("Digite o id de inicio: \n");
+                    System.out.print("Digite o id de inicio: ");
                     id = scan.nextInt();
                     grf.buscaEmLargura(id-1); // "-1" pois comeca com "um", e nao com "zero"
                     System.out.println();

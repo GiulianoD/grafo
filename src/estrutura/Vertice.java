@@ -3,8 +3,8 @@ package estrutura;
 import java.util.ArrayList;
 
 public class Vertice<TIPO> {
-    private TIPO id;
-    private String nome;
+    private int id;
+    private TIPO dados;
     private ArrayList<Aresta<TIPO>> arestasEntradas;
     private ArrayList<Aresta<TIPO>> arestasSaidas;
 
@@ -15,22 +15,22 @@ public class Vertice<TIPO> {
         return arestasSaidas;
     }
 
-    public Vertice(TIPO id, String nome){
+    public Vertice(int id, TIPO dados){
         this.id = id;
-        this.nome = nome;
+        this.dados = dados;
         this.arestasEntradas = new ArrayList<Aresta<TIPO>>();
         this.arestasSaidas = new ArrayList<Aresta<TIPO>>();
     }
 
-    public String getNome() {
-        return nome;
+    public TIPO getDados() {
+        return dados;
     }
     
-    public TIPO getid() {
+    public int getid() {
         return id;
     }
-    public void setDado(TIPO id) {
-        this.id = id;
+    public void setDado(TIPO dados) {
+        this.dados = dados;
     }
 
     public void addArestaEntrada (Aresta<TIPO> aresta){
